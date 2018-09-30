@@ -1,4 +1,11 @@
-package gotmsf
+package util
+
+import (
+	"encoding/json"
+	"github.com/dailing/levlog"
+	"reflect"
+	"strconv"
+)
 
 type JsonType map[string]interface{}
 
@@ -73,4 +80,8 @@ func (j *JsonType) GetInt(key string) int {
 	}
 	levlog.Error("Get Key Error ", reflect.TypeOf(val))
 	return 0
+}
+
+func (j *JsonType) Set(key string, val interface{}) {
+	(*j)[key] = val
 }
